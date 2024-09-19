@@ -1,23 +1,19 @@
 package org.example;
 
+import org.example.controller.MainController;
 import org.example.model.Menu;
 import org.example.model.Order;
 import org.example.model.Table;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-
 
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println("\nInit");
-
-        //create RestaurantDB r1;
-        sandboxCreateObjects();
-        //o1.calculateIVA();
+        System.out.println("\nInit\n");
+        MainController.start();
         System.out.println("\nFinish");
     }
 
@@ -41,9 +37,7 @@ public class App
         m.add(m1);
         m.add(m1);
         m.add(m2);
-        m.add(m3);
-        m.add(m3);
-        //add a menu by Enrique
+        m.add(m3);;
 
 
         Order o1 = new Order(new Date(), "Jazz", 20, 0.0, false, t1, null);
