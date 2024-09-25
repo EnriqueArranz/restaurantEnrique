@@ -2,12 +2,11 @@ package org.example.manager;
 
 import org.example.model.Menu;
 import org.example.model.Order;
+import org.example.model.Table;
 import org.example.repository.RestaurantDB;
 import org.example.utils.Utilities;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class OrderManger {
 
@@ -75,12 +74,15 @@ public class OrderManger {
         }
 
         // create table
+
+        List<String> sortedTables = new ArrayList<>(r1.getTables().keySet());
+        Collections.sort(sortedTables);
         System.out.println("\nSelect table:");
         System.out.println("0 - Take Away");
-        r1.getTables().forEach((key, table) -> {
-            // if table is not busy if (table.getName() == false)
-            System.out.println( key + " - "+ table.getName());
-        });
+        for (String key : sortedTables) {
+            Table table = r1.getTables().get(key);
+            System.out.println(key + " - " + table.getName());
+        }
         String tableSelection = Utilities.ask(scanner, "Table? ");
 
         if (tableSelection.equals("0")) order1.setTable(null);
