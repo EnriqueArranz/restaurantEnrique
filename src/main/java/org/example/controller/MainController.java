@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.manager.OrderManger;
+import org.example.manager.OrderManager;
 import org.example.manager.TableManager;
 import org.example.repository.RestaurantDB;
 import org.example.utils.Utilities;
@@ -28,12 +28,12 @@ public class MainController {
             if (option.equals("0")) {
                 break;
             } else if (option.equals("1")){
-                //OrderManger.testOrder(r1);
-                OrderManger.createOrder(scanner, r1);
+                //OrderManager.testOrder(r1);
+                OrderManager.createOrder(scanner, r1);
             } else if (option.equals("2")){
                 TableManager.printAvailableTables(r1);
             } else if (option.equals("3")){
-               OrderManger.payOrder();
+               OrderManager.payOrder();
             } else if (option.equals("4")){
               AdminController.start(scanner);
             } else {

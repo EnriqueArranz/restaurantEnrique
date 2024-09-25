@@ -22,16 +22,16 @@ public class Order {
     //Calculate the amount to pay with IVA
     public double calculateTotalPayment (){
 
-        double totalPyment = 0.0;
+        double totalPayment = 0.0;
         for (Menu m : this.getMenus()) {
-            totalPyment = totalPyment + m.getPrice();
+            totalPayment = totalPayment + m.getPrice();
         }
 
-        double totalPymentIVA =  calculateIVA(totalPyment);
-        this.setTotalPayment(totalPymentIVA);
+        double totalPaymentIVA =  calculateIVA(totalPayment);
+        this.setTotalPayment(totalPaymentIVA);
 
         //System.out.println(this);
-        return totalPymentIVA;
+        return totalPaymentIVA;
     }
     // calculate IVA with 21%
     public double calculateIVA(double number){
