@@ -1,78 +1,60 @@
 package org.example.manager;
 
+
 import org.example.model.Table;
 import org.example.repository.RestaurantDB;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 public class TableManager {
-    public static void printAvailableTables(RestaurantDB r1) {
+
+    public static void printTestAvailableTables(RestaurantDB r1) {
         // print available tables
         System.out.println("\nAvailable tables:\n");
-// let s fake a busy table
-        r1.getTables().get("TABLE-01").setBusy(true);
-// Create a List to store the available tables
-        List<Table> availableTables = new ArrayList<>();
-        List<Table> busyTables = new ArrayList<>();
-        for (Table t : r1.getTables().values()) {
-            if (!t.isBusy()) {
-                availableTables.add(t);
-            } else if (t.isBusy()) {
-                busyTables.add(t);
-            }
-        }
-
-        Collections.sort(availableTables, Comparator.comparing(Table::getName));
-        int i = 1;
-        for (Table t : availableTables) {
-            System.out.println(i + " - " + t.getName()+ "*FREE");
-            i++;
-        }
-        int j = 1;
-        for (Table t : busyTables) {
-            System.out.println(j + " - " + t.getName()+ "*BUSY");
-            j++;
-        }
-    }
-
-    public static void printBusyTables(RestaurantDB r1){
         // let s fake a busy table
         r1.getTables().get("TABLE-01").setBusy(true);
-        List<Table> busyTables = new ArrayList<>();
-        for (Table t : r1.getTables().values()) {
-            if (t.isBusy()) {
-                busyTables.add(t);
+        // iterate all tables from hashmap to check if they are available
+        int i = 1;
+        for ( Table t : r1.getTables().values() ){
+            if(!t.isBusy()) {
+                System.out.println(i + " - " + t.getName());
+                i++;
             }
         }
-        Collections.sort(busyTables, Comparator.comparing(Table::getName));
-        int i = 1;
-        for (Table t : busyTables) {
-            System.out.println(i + " - " + t.getName()+ "*BUSY");
-            i++;
+    }
+
+    public static void printAvailableTables(RestaurantDB r1) {
+        System.out.println("\nAvailable tables:\n");
+
+        for (Map.Entry<String, Table> entry : r1.getTables().entrySet()) {
+            String key = entry.getKey();
+            Table table = entry.getValue();
+            if (!table.isBusy()) {
+                System.out.println(key + " - " + table.getName());
+            }
+
+
         }
     }
 
-    public static void deleteAll() {
+    public static void deleteAll(){
         //todo
     }
 
-    public static void createTable() {
+    public static void createTable(){
         //todo
     }
 
-    public static void updateTable() {
+    public static void updateTable(){
         //todo
     }
 
-    public static List<Table> getAllTables() {
+    public static List<Table> getAllTables(){
         //todo
         return null;
     }
 
-    public static Table getOneTable(String id) {
+    public static Table getOneTable(String id){
         //todo
         return null;
     }

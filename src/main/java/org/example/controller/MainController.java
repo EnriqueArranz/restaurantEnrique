@@ -28,8 +28,10 @@ public class MainController {
             if (option.equals("0")) {
                 break;
             } else if (option.equals("1")){
-                //OrderManager.testOrder(r1);
-                OrderManager.createOrder(scanner, r1);
+                //OrderManger.testOrder(r1);
+               if ( OrderManager.createOrder(scanner, r1))
+                   System.out.println("Order saved properly");
+               else System.out.println("Error. Try again.");
             } else if (option.equals("2")){
                 TableManager.printAvailableTables(r1);
             } else if (option.equals("3")){

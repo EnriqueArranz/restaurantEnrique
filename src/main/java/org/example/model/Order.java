@@ -19,27 +19,18 @@ public class Order {
     private Table table;
     private ArrayList<Menu> menus;
 
-    //Calculate the amount to pay with IVA
-    public double calculateTotalPayment (){
-
-        double totalPayment = 0.0;
-        for (Menu m : this.getMenus()) {
-            totalPayment = totalPayment + m.getPrice();
-        }
-
-        double totalPaymentIVA =  calculateIVA(totalPayment);
-        this.setTotalPayment(totalPaymentIVA);
-
-        //System.out.println(this);
-        return totalPaymentIVA;
+    @Override
+    public String toString() {
+        return
+                "date: " + date + "\n"  +
+                "waiter: " + waiter  + "\n"  +
+                "peopleQty: " + peopleQty +"\n"  +
+                "totalPayment: " + totalPayment +" euros\n"  +
+                "paid: " + paid +"\n"  +
+                "table: " + table +"\n"  +
+                "Menus quantity: " + menus.size() +"\n"  +
+                "menus: " + menus
+                ;
     }
-    // calculate IVA with 21%
-    public double calculateIVA(double number){
-        double iva = 0.21;
-        number = number * (1.0 + iva);
-        return number;
-    }
-
-
 
 }
